@@ -640,8 +640,14 @@
       }
     ];
 
-    // Read synced modifications from admin dashboard if present
-    const CATALOG = JSON.parse(localStorage.getItem("asian_crackers_catalog")) || DEFAULT_CATALOG;
+    const API_BASE_URL = new URLSearchParams(window.location.search).get("api") || (
+      (window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1")
+        ? (window.location.port === "5000" ? "http://localhost:5000" : "http://localhost:5001")
+        : "https://asian-crackers-api.onrender.com"
+    );
+
+    // Use the database catalog for customers, with the bundled catalog as an offline fallback.
+    let CATALOG = JSON.parse(localStorage.getItem("asian_crackers_catalog")) || DEFAULT_CATALOG;
 
     // Start with an empty cart or restore actual user cart from localStorage
     let cart = JSON.parse(localStorage.getItem("asian_crackers_cart")) || {};
@@ -1022,8 +1028,22 @@
       }
     }
 
-    renderCatalog();
-    syncState();
+    async function loadCatalog() {
+      try {
+        const response = await fetch(`${API_BASE_URL}/api/products`);
+        if (!response.ok) throw new Error(`HTTP ${response.status}`);
+        const liveCatalog = await response.json();
+        if (!Array.isArray(liveCatalog)) throw new Error("Invalid catalog response");
+        CATALOG = liveCatalog;
+        localStorage.setItem("asian_crackers_catalog", JSON.stringify(CATALOG));
+      } catch (err) {
+        console.warn("Live catalog unavailable; using cached catalog:", err);
+      }
+      renderCatalog();
+      syncState();
+    }
+
+    loadCatalog();
   </script>
 </body>
 </html>

@@ -124,18 +124,25 @@ router.put('/:id', requireAuth, async (req, res) => {
 
     const current = existing.rows[0];
 
-    const updatedName = name !== undefined ? name.trim() : current.name;
-    const updatedTamil = tamil !== undefined ? tamil.trim() : current.tamil;
-    const updatedPrice = price !== undefined ? parseFloat(price) : parseFloat(current.price);
-    const updatedPer = per !== undefined ? per.trim() : current.per;
-    const updatedImg = img !== undefined ? img.trim() : current.img;
+    const updatedName = name !== undefined ? String(name).trim() : current.name;
+    const updatedTamil = tamil !== undefined ? String(tamil).trim() : current.tamil;
+    const updatedPrice = price !== undefined ? Number(price) : Number(current.price);
+    const updatedPer = per !== undefined ? String(per).trim() : current.per;
+    const updatedImg = img !== undefined ? String(img).trim() : current.img;
     const updatedTags = tags !== undefined ? JSON.stringify(tags) : JSON.stringify(current.tags || []);
     const updatedActive = is_active !== undefined ? Boolean(is_active) : current.is_active;
 
-    if (isNaN(updatedPrice) || updatedPrice < 0) {
+    if (!updatedName || !updatedTamil || !updatedPer) {
       return res.status(400).json({
         success: false,
-        error: 'Price must be a valid positive number.',
+        error: 'Name, Tamil description, and packaging unit cannot be empty.',
+      });
+    }
+
+    if (!Number.isFinite(updatedPrice) || updatedPrice < 0) {
+      return res.status(400).json({
+        success: false,
+        error: 'Price must be a valid non-negative number.',
       });
     }
 
@@ -183,10 +190,18 @@ router.post('/', requireAuth, async (req, res) => {
   try {
     const { id, catalog_key, category_title, name, tamil, price, per, tags, img } = req.body;
 
-    if (!catalog_key || !category_title || !name || !tamil || price === undefined || !per) {
+    const numericPrice = Number(price);
+    if (!catalog_key?.trim() || !category_title?.trim() || !name?.trim() || !tamil?.trim() || price === undefined || !per?.trim()) {
       return res.status(400).json({
         success: false,
         error: 'catalog_key, category_title, name, tamil, price, and per are required fields.',
+      });
+    }
+
+    if (!Number.isFinite(numericPrice) || numericPrice < 0) {
+      return res.status(400).json({
+        success: false,
+        error: 'Price must be a valid non-negative number.',
       });
     }
 
@@ -226,7 +241,7 @@ router.post('/', requireAuth, async (req, res) => {
       category_title.trim(),
       name.trim(),
       tamil.trim(),
-      parseFloat(price),
+      numericPrice,
       per.trim(),
       JSON.stringify(tags || []),
       img ? img.trim() : '',
