@@ -30,6 +30,8 @@ const WHATSAPP_TOKEN = process.env.WHATSAPP_TOKEN;
 // Configure CORS allowlist
 const defaultOrigins = [
   'https://asian-crackers-api.onrender.com',
+  'https://asian-crackers.onrender.com',
+  'https://vijayramanan12.github.io',
   'http://localhost:5000',
   'http://localhost:3000',
   'http://localhost:8080',
