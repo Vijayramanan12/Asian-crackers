@@ -70,8 +70,15 @@ app.use(cookieParser());
 app.use(express.json({ limit: '50mb' }));
 app.use(express.urlencoded({ limit: '50mb', extended: true }));
 
-// Serve frontend static assets (HTML, CSS, images) if hosted together
-app.use(express.static(rootDir));
+// Serve frontend static assets (HTML, CSS, images) if hosted together.
+// HTML must revalidate so production admin updates are visible after deployment.
+app.use(express.static(rootDir, {
+  setHeaders: (res, filePath) => {
+    if (filePath.endsWith('.html')) {
+      res.setHeader('Cache-Control', 'no-store');
+    }
+  },
+}));
 
 // Health Check
 app.get('/api/health', (req, res) => {
