@@ -392,7 +392,34 @@
   <script>
     const MINIMUM_ORDER = 2000;
     const WHATSAPP_DEPOT = "919345999862";
-    const BACKEND_API_URL = "http://localhost:5000/api/send-whatsapp-bill";
+    // Allowed backend origins — the ?api= param must match one of these exactly
+    const ALLOWED_API_ORIGINS = new Set([
+      "https://asian-crackers-api.onrender.com",
+      "http://localhost:5000",
+      "http://localhost:5001",
+    ]);
+
+    function resolveApiBaseUrl() {
+      const param = new URLSearchParams(window.location.search).get("api");
+      if (param) {
+        try {
+          const origin = new URL(param).origin;
+          if (ALLOWED_API_ORIGINS.has(origin)) {
+            return origin;
+          }
+          console.warn("Rejected untrusted api param:", param);
+        } catch {
+          console.warn("Invalid api param:", param);
+        }
+      }
+      if (window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1") {
+        return window.location.port === "5000" ? "http://localhost:5000" : "http://localhost:5001";
+      }
+      return "https://asian-crackers-api.onrender.com";
+    }
+
+    const API_BASE_URL = resolveApiBaseUrl();
+    const BACKEND_API_URL = `${API_BASE_URL}/api/send-whatsapp-bill`;
 
     const DEFAULT_CATALOG = [
       {
@@ -639,12 +666,6 @@
         ]
       }
     ];
-
-    const API_BASE_URL = new URLSearchParams(window.location.search).get("api") || (
-      (window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1")
-        ? "http://localhost:5000"
-        : "https://asian-crackers-api.onrender.com"
-    );
 
     // Use the database catalog for customers, with the bundled catalog as an offline fallback.
     let CATALOG = JSON.parse(localStorage.getItem("asian_crackers_catalog")) || DEFAULT_CATALOG;
