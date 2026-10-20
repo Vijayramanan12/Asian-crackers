@@ -65,7 +65,7 @@
   <!-- 1. Top Announcement Header Bar -->
   <div class="bg-[#0F1E36] text-white text-xs py-2 px-4">
     <div class="max-w-6xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-1 font-medium">
-      <div>Asian Crackers — Wholesale Catalog Management Portal (2026)</div>
+      <div>Asian Crackers — Wholesale Catalog Management Portal (Flat 90% Discount Mode)</div>
       <div class="flex items-center gap-3 text-amber-300">
         <a href="index.html" class="hover:underline flex items-center gap-1 font-bold">🏪 Visit Live Store ›</a>
       </div>
@@ -106,9 +106,9 @@
       <div class="flex items-center gap-3">
         <div class="w-10 h-10 rounded-xl bg-amber-500/20 border border-amber-400/30 flex items-center justify-center text-xl shrink-0 text-amber-400">📝</div>
         <div>
-          <span class="font-bold text-xs uppercase tracking-wider text-amber-300">Live Price & Stock Editor</span>
-          <h2 class="font-black text-base sm:text-lg text-white">Full Sivakasi Wholesale Catalog (All 130+ Items)</h2>
-          <p class="text-xs text-slate-300">Edit prices, descriptions, and images. All changes sync with your live store automatically.</p>
+          <span class="font-bold text-xs uppercase tracking-wider text-amber-300">Live Wholesale & MRP Editor</span>
+          <h2 class="font-black text-base sm:text-lg text-white">Full Sivakasi Wholesale Catalog (Flat 90% Calculation Active)</h2>
+          <p class="text-xs text-slate-300">Updating the wholesale rate or MRP recalculates store discounts and updates PostgreSQL instantly.</p>
         </div>
       </div>
       <div class="flex items-center gap-3 text-xs">
@@ -140,74 +140,13 @@
       <a href="index.html" target="_blank" class="w-full sm:w-auto bg-[#FFC400] hover:bg-[#ebb500] font-black text-xs px-5 py-2 rounded-lg text-slate-900 flex items-center justify-center gap-2 transition">
         👁️ Open Live Store
       </a>
-      <button onclick="openAddModal()" class="w-full sm:w-auto bg-slate-900 hover:bg-slate-800 font-black text-xs px-5 py-2 rounded-lg text-white flex items-center justify-center gap-2 transition">
-        ＋ Add Product
-      </button>
     </div>
 
     <!-- Product Grid Container -->
     <div id="admin-catalog-container" class="space-y-6 mb-16"></div>
   </main>
 
-  <!-- 5. Add Item Modal -->
-  <div id="add-modal" class="fixed inset-0 bg-black/60 backdrop-blur-xs z-50 hidden flex items-center justify-center p-4">
-    <div class="bg-white rounded-2xl max-w-md w-full max-h-[90vh] overflow-y-auto p-6 relative shadow-2xl">
-      <button onclick="closeAddModal()" class="absolute top-4 right-4 text-slate-400 hover:text-slate-700 font-bold text-lg">✕</button>
-
-      <div class="flex items-center gap-2 mb-1">
-        <span class="text-xl">➕</span>
-        <h3 class="font-black text-slate-900 text-base">Add New Product</h3>
-      </div>
-      <p class="text-xs text-slate-400 mb-4">New products are published to the customer store immediately.</p>
-
-      <form id="add-form" onsubmit="createProduct(event)" class="space-y-3 text-xs font-semibold">
-        <div class="grid grid-cols-2 gap-3">
-          <div>
-            <label class="block text-slate-700 mb-1">Catalog Key *</label>
-            <input required id="add-catalog-key" class="w-full border border-slate-200 rounded-lg p-2.5 text-xs text-slate-800 focus:border-amber-400 focus:outline-none" placeholder="A1" />
-          </div>
-          <div>
-            <label class="block text-slate-700 mb-1">Product ID</label>
-            <input id="add-id" class="w-full border border-slate-200 rounded-lg p-2.5 text-xs text-slate-800 focus:border-amber-400 focus:outline-none" placeholder="Auto-generated" />
-          </div>
-        </div>
-
-        <div>
-          <label class="block text-slate-700 mb-1">Category Title *</label>
-          <input required id="add-category-title" class="w-full border border-slate-200 rounded-lg p-2.5 text-xs text-slate-800 focus:border-amber-400 focus:outline-none" placeholder="Sparklers" />
-        </div>
-        <div>
-          <label class="block text-slate-700 mb-1">Product Name (English) *</label>
-          <input required id="add-name" class="w-full border border-slate-200 rounded-lg p-2.5 text-xs text-slate-800 focus:border-amber-400 focus:outline-none" />
-        </div>
-        <div>
-          <label class="block text-slate-700 mb-1">Tamil Description *</label>
-          <input required id="add-tamil" class="w-full border border-slate-200 rounded-lg p-2.5 text-xs text-slate-800 focus:border-amber-400 focus:outline-none" />
-        </div>
-
-        <div class="grid grid-cols-2 gap-3">
-          <div>
-            <label class="block text-slate-700 mb-1">Wholesale Price (₹) *</label>
-            <input required type="number" step="0.5" min="0" id="add-price" class="w-full border border-slate-200 rounded-lg p-2.5 text-xs text-slate-800 focus:border-amber-400 focus:outline-none" />
-          </div>
-          <div>
-            <label class="block text-slate-700 mb-1">Packaging Unit *</label>
-            <input required id="add-per" class="w-full border border-slate-200 rounded-lg p-2.5 text-xs text-slate-800 focus:border-amber-400 focus:outline-none" placeholder="1 PKT / 1 BOX / 1 BAG" />
-          </div>
-        </div>
-        <div>
-          <label class="block text-slate-700 mb-1">Image URL / Local File Path</label>
-          <input id="add-img" class="w-full border border-slate-200 rounded-lg p-2.5 text-xs text-slate-800 focus:border-amber-400 focus:outline-none" placeholder="images/item.jpeg" />
-        </div>
-
-        <button type="submit" class="w-full py-3 bg-[#FFC400] hover:bg-[#ebb500] text-slate-900 font-extrabold text-xs rounded-lg transition shadow-xs mt-2">
-          Add & Publish Product ›
-        </button>
-      </form>
-    </div>
-  </div>
-
-  <!-- 6. Edit Item Modal -->
+  <!-- 5. Edit Item Modal -->
   <div id="edit-modal" class="fixed inset-0 bg-black/60 backdrop-blur-xs z-50 hidden flex items-center justify-center p-4">
     <div class="bg-white rounded-2xl max-w-md w-full p-6 relative shadow-2xl">
       <button onclick="closeEditModal()" class="absolute top-4 right-4 text-slate-400 hover:text-slate-700 font-bold text-lg">✕</button>
@@ -233,13 +172,18 @@
 
         <div class="grid grid-cols-2 gap-3">
           <div>
-            <label class="block text-slate-700 mb-1">Wholesale Price (₹) *</label>
-            <input required type="number" step="0.5" min="0" id="edit-price" class="w-full border border-slate-200 rounded-lg p-2.5 text-xs text-slate-800 focus:border-amber-400 focus:outline-none" />
+            <label class="block text-slate-700 mb-1">Wholesale Rate (10%) *</label>
+            <input required type="number" step="0.5" min="0" id="edit-price" oninput="autoCalculateMrp(this.value)" class="w-full border border-slate-200 rounded-lg p-2.5 text-xs text-slate-800 focus:border-amber-400 focus:outline-none" />
           </div>
           <div>
-            <label class="block text-slate-700 mb-1">Packaging Unit *</label>
-            <input required id="edit-per" class="w-full border border-slate-200 rounded-lg p-2.5 text-xs text-slate-800 focus:border-amber-400 focus:outline-none" placeholder="1 PKT / 1 BOX / 1 BAG" />
+            <label class="block text-slate-700 mb-1">Original MRP (Strikethrough) *</label>
+            <input required type="number" step="1" min="0" id="edit-mrp" class="w-full border border-slate-200 rounded-lg p-2.5 text-xs text-slate-800 focus:border-amber-400 focus:outline-none bg-slate-50" />
           </div>
+        </div>
+
+        <div>
+          <label class="block text-slate-700 mb-1">Packaging Unit *</label>
+          <input required id="edit-per" class="w-full border border-slate-200 rounded-lg p-2.5 text-xs text-slate-800 focus:border-amber-400 focus:outline-none" placeholder="1 PKT / 1 BOX / 1 BAG" />
         </div>
 
         <div>
@@ -255,39 +199,23 @@
   </div>
 
   <script>
-    // Allowed backend origins — the ?api= param must match one of these exactly
-    const ALLOWED_API_ORIGINS = new Set([
-      "https://asian-crackers-api.onrender.com",
-      "http://localhost:5000",
-      "http://localhost:5001",
-    ]);
-
-    function resolveApiBaseUrl() {
-      const param = new URLSearchParams(window.location.search).get("api");
-      if (param) {
-        try {
-          const origin = new URL(param).origin;
-          if (ALLOWED_API_ORIGINS.has(origin)) {
-            return origin;
-          }
-          console.warn("Rejected untrusted api param:", param);
-        } catch {
-          console.warn("Invalid api param:", param);
-        }
-      }
-      if (window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1") {
-        return window.location.port === "5000" ? "http://localhost:5000" : "http://localhost:5001";
-      }
-      return "https://asian-crackers-api.onrender.com";
-    }
-
-    const API_BASE_URL = resolveApiBaseUrl();
+    const API_BASE_URL = new URLSearchParams(window.location.search).get("api") || (
+      (window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1")
+        ? (window.location.port === "5000" ? "http://localhost:5000" : "http://localhost:5001")
+        : "https://asian-crackers-api.onrender.com"
+    );
 
     let catalog = [];
     let currentSearch = "";
     let adminToken = sessionStorage.getItem("admin_token") || "";
 
-    // Check backend authentication status on page load
+    function autoCalculateMrp(wholesalePrice) {
+      const val = parseFloat(wholesalePrice);
+      if (!isNaN(val)) {
+        document.getElementById("edit-mrp").value = Math.round(val * 10);
+      }
+    }
+
     async function checkAdminAuth() {
       const overlay = document.getElementById("auth-overlay");
       try {
@@ -313,7 +241,6 @@
       }
     }
 
-    // Handle Admin Login submission
     async function handleAdminLogin(e) {
       e.preventDefault();
       const user = document.getElementById("login-user").value.trim();
@@ -355,7 +282,6 @@
       }
     }
 
-    // Logout and invalidate session
     async function adminLogout() {
       try {
         await fetch(`${API_BASE_URL}/api/admin/logout`, {
@@ -371,7 +297,6 @@
       }
     }
 
-    // Fetch complete catalog from PostgreSQL database API
     async function fetchAdminCatalog() {
       const container = document.getElementById("admin-catalog-container");
       container.innerHTML = `
@@ -383,7 +308,7 @@
       `;
 
       try {
-        const res = await fetch(`${API_BASE_URL}/api/products`, { cache: "no-store" });
+        const res = await fetch(`${API_BASE_URL}/api/products`);
         if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
         const data = await res.json();
         catalog = data;
@@ -440,33 +365,46 @@
           </div>
 
           <div class="p-3 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-3">
-            ${filtered.map(item => `
-              <div class="border border-slate-200 rounded-xl p-3 flex flex-col justify-between bg-white relative hover:border-amber-400 transition group shadow-2xs">
-                <div>
-                  <div class="aspect-[4/3] rounded-lg overflow-hidden bg-slate-100 mb-2 border border-slate-100">
-                    <img 
-                      src="${item.img || "https://images.unsplash.com/photo-1514525253161-7a46d19cd819?w=350&q=80"}" 
-                      alt="${item.name}" 
-                      class="w-full h-full object-cover group-hover:scale-105 transition duration-300"
-                      loading="lazy"
-                      onerror="this.src='https://images.unsplash.com/photo-1514525253161-7a46d19cd819?w=350&q=80'"
-                    />
+            ${filtered.map(item => {
+              const wholesale = Number(item.price);
+              const mrp = item.mrp ? Number(item.mrp) : (wholesale * 10);
+
+              return `
+                <div class="border border-slate-200 rounded-xl p-3 flex flex-col justify-between bg-white relative hover:border-amber-400 transition group shadow-2xs">
+                  <span class="absolute top-2.5 left-2.5 bg-red-600 text-white text-[10px] font-black px-2 py-0.5 rounded shadow-xs z-10">
+                    90% OFF
+                  </span>
+
+                  <div>
+                    <div class="aspect-[4/3] rounded-lg overflow-hidden bg-slate-100 mb-2 border border-slate-100">
+                      <img 
+                        src="${item.img || "https://images.unsplash.com/photo-1514525253161-7a46d19cd819?w=350&q=80"}" 
+                        alt="${item.name}" 
+                        class="w-full h-full object-cover group-hover:scale-105 transition duration-300"
+                        loading="lazy"
+                        onerror="this.src='https://images.unsplash.com/photo-1514525253161-7a46d19cd819?w=350&q=80'"
+                      />
+                    </div>
+                    <div class="flex items-center justify-between text-[10px] font-bold text-slate-400 mb-1">
+                      <span>#${item.id}</span>
+                      <span class="bg-slate-100 px-1.5 py-0.5 rounded text-slate-500">${item.per}</span>
+                    </div>
+                    <h4 class="font-bold text-xs text-slate-900 line-clamp-1">${item.name}</h4>
+                    <p class="text-[11px] font-medium text-amber-800 line-clamp-1 mt-0.5">${item.tamil}</p>
+                    
+                    <div class="mt-2 flex items-baseline gap-2">
+                      <span class="text-xs text-slate-400 line-through">₹${Math.round(mrp)}</span>
+                      <span class="font-black text-slate-900 text-base">₹${wholesale.toFixed(2)}</span>
+                    </div>
                   </div>
-                  <div class="flex items-center justify-between text-[10px] font-bold text-slate-400 mb-1">
-                    <span>#${item.id}</span>
-                    <span class="bg-slate-100 px-1.5 py-0.5 rounded text-slate-500">${item.per}</span>
+                  <div class="mt-3">
+                    <button onclick="openEditModal('${item.id}')" class="w-full py-1.5 bg-[#FFC400] hover:bg-[#ebb500] text-slate-900 font-bold rounded-lg text-xs transition flex items-center justify-center gap-1 shadow-2xs">
+                      ✏️ Edit Price & Details
+                    </button>
                   </div>
-                  <h4 class="font-bold text-xs text-slate-900 line-clamp-1">${item.name}</h4>
-                  <p class="text-[11px] font-medium text-amber-800 line-clamp-1 mt-0.5">${item.tamil}</p>
-                  <p class="font-black text-slate-900 text-sm mt-1.5">₹${Number(item.price).toFixed(2)}</p>
                 </div>
-                <div class="mt-3">
-                  <button onclick="openEditModal('${item.id}')" class="w-full py-1.5 bg-[#FFC400] hover:bg-[#ebb500] text-slate-900 font-bold rounded-lg text-xs transition flex items-center justify-center gap-1 shadow-2xs">
-                    ✏️ Edit Price & Details
-                  </button>
-                </div>
-              </div>
-            `).join("")}
+              `;
+            }).join("")}
           </div>
         `;
         container.appendChild(card);
@@ -484,68 +422,19 @@
       }
       if (!found) return;
 
+      const wholesale = Number(found.price);
+      const mrp = found.mrp ? Number(found.mrp) : Math.round(wholesale * 10);
+
       document.getElementById("edit-id").value = found.id;
       document.getElementById("modal-item-id-label").innerText = `#${found.id} - ${found.name}`;
       document.getElementById("edit-name").value = found.name;
       document.getElementById("edit-tamil").value = found.tamil;
       document.getElementById("edit-price").value = found.price;
+      document.getElementById("edit-mrp").value = mrp;
       document.getElementById("edit-per").value = found.per;
       document.getElementById("edit-img").value = found.img || "";
 
       document.getElementById("edit-modal").classList.remove("hidden");
-    }
-
-    function openAddModal() {
-      document.getElementById("add-form").reset();
-      document.getElementById("add-modal").classList.remove("hidden");
-    }
-
-    function closeAddModal() {
-      document.getElementById("add-modal").classList.add("hidden");
-    }
-
-    async function createProduct(e) {
-      e.preventDefault();
-      const form = e.target;
-      const submitBtn = form.querySelector("button[type='submit']");
-      const originalText = submitBtn.innerHTML;
-      const price = parseFloat(document.getElementById("add-price").value);
-      const product = {
-        id: document.getElementById("add-id").value.trim() || undefined,
-        catalog_key: document.getElementById("add-catalog-key").value.trim(),
-        category_title: document.getElementById("add-category-title").value.trim(),
-        name: document.getElementById("add-name").value.trim(),
-        tamil: document.getElementById("add-tamil").value.trim(),
-        price,
-        per: document.getElementById("add-per").value.trim(),
-        img: document.getElementById("add-img").value.trim()
-      };
-
-      submitBtn.disabled = true;
-      submitBtn.innerHTML = "⏳ Publishing to PostgreSQL...";
-
-      try {
-        const headers = { "Content-Type": "application/json" };
-        if (adminToken) headers["Authorization"] = `Bearer ${adminToken}`;
-        const res = await fetch(`${API_BASE_URL}/api/products`, {
-          method: "POST",
-          headers,
-          credentials: "include",
-          body: JSON.stringify(product)
-        });
-        const data = await res.json();
-        if (!res.ok || !data.success) throw new Error(data.error || "Server rejected product creation.");
-
-        closeAddModal();
-        await fetchAdminCatalog();
-        showToast(`✅ Added #${data.product.id} (${data.product.name}) to the customer store.`);
-      } catch (err) {
-        console.error("Create error:", err);
-        alert(`❌ Failed to add product: ${err.message}`);
-      } finally {
-        submitBtn.disabled = false;
-        submitBtn.innerHTML = originalText;
-      }
     }
 
     function closeEditModal() {
@@ -558,6 +447,7 @@
       const name = document.getElementById("edit-name").value.trim();
       const tamil = document.getElementById("edit-tamil").value.trim();
       const price = parseFloat(document.getElementById("edit-price").value);
+      const mrp = parseFloat(document.getElementById("edit-mrp").value);
       const per = document.getElementById("edit-per").value.trim();
       const img = document.getElementById("edit-img").value.trim();
 
@@ -576,7 +466,7 @@
           method: "PUT",
           headers,
           credentials: "include",
-          body: JSON.stringify({ name, tamil, price, per, img })
+          body: JSON.stringify({ name, tamil, price, mrp, per, img })
         });
 
         const data = await res.json();
@@ -585,13 +475,13 @@
           throw new Error(data.error || "Server rejected product update.");
         }
 
-        // Update in-memory catalog
         for (const cat of catalog) {
           const item = cat.items.find(i => String(i.id) === String(id));
           if (item) {
             item.name = data.product.name;
             item.tamil = data.product.tamil;
             item.price = data.product.price;
+            item.mrp = data.product.mrp || mrp;
             item.per = data.product.per;
             item.img = data.product.img;
             break;
@@ -625,7 +515,6 @@
       }, 3500);
     }
 
-    // Run auth check on initial load
     checkAdminAuth();
   </script>
 </body>

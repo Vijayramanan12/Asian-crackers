@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Asian Crackers - Sivakasi (Price List 2026)</title>
+  <title>Asian Crackers - Sivakasi (Wholesale Price List 2026 - Flat 90% OFF)</title>
 
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
@@ -39,7 +39,10 @@
   <!-- 1. Top Announcement Header Bar -->
   <div class="bg-[#0F1E36] text-white text-xs py-2 px-4">
     <div class="max-w-6xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-1 font-medium">
-      <div>Asian Crackers — Wholesale Price List 2026 Live !</div>
+      <div class="flex items-center gap-2">
+        <span class="bg-red-600 text-white font-extrabold px-2 py-0.5 rounded text-[10px] tracking-wider uppercase animate-pulse">Flat 90% OFF</span>
+        <span>Asian Crackers — Sivakasi Wholesale 2026 Live!</span>
+      </div>
       <div class="flex items-center gap-4 text-amber-300">
         <a href="tel:9345999862" class="hover:underline flex items-center gap-1">📞 +91 93459 99862</a>
         <a href="tel:6383809040" class="hover:underline flex items-center gap-1">📞 +91 63838 09040</a>
@@ -83,9 +86,9 @@
       <div class="flex items-center gap-3">
         <div class="w-10 h-10 rounded-xl bg-indigo-500/20 border border-indigo-400/30 flex items-center justify-center text-xl shrink-0">✨</div>
         <div>
-          <span class="font-bold text-xs uppercase tracking-wider text-amber-300">Smart Festival Planner</span>
+          <span class="font-bold text-xs uppercase tracking-wider text-amber-300">Festival Bonanza (Flat 90% Discount Applied)</span>
           <h2 class="font-black text-base sm:text-lg text-white">Let AI Build Your 2026 Diwali Box</h2>
-          <p class="text-xs text-slate-300">Set your budget & preferred mix across all items from our wholesale sheet.</p>
+          <p class="text-xs text-slate-300">Set your budget & preferred mix across all genuine Sivakasi wholesale stock.</p>
         </div>
       </div>
       <div class="flex items-center gap-2 w-full md:w-auto">
@@ -189,7 +192,7 @@
           <span class="text-xl">🪔</span>
           <span class="font-black text-sm tracking-tight uppercase">Asian Crackers</span>
         </div>
-        <p class="text-slate-400 leading-relaxed mb-4">Genuine wholesale Sivakasi fireworks directly from factory hub. Safe, high quality festival supplies.</p>
+        <p class="text-slate-400 leading-relaxed mb-4">Genuine wholesale Sivakasi fireworks directly from factory hub at 90% direct discount.</p>
         <a href="https://wa.me/919345999862?text=Hello%20Asian%20Crackers" target="_blank" class="inline-flex items-center gap-2 border border-emerald-500/40 text-emerald-400 bg-emerald-950/40 px-3 py-1.5 rounded-lg font-bold hover:bg-emerald-900/40 transition">
           💬 Connect on WhatsApp
         </a>
@@ -269,7 +272,7 @@
     <div class="bg-[#0F1E36] text-white rounded-full shadow-2xl p-1.5 pl-5 pr-2 flex items-center gap-4 pointer-events-auto border border-slate-700">
       <div class="flex items-center gap-3">
         <div class="text-left">
-          <span class="text-[9px] uppercase tracking-wider text-slate-400 font-bold block leading-tight">Grand Total</span>
+          <span class="text-[9px] uppercase tracking-wider text-slate-400 font-bold block leading-tight">Wholesale Total</span>
           <span id="sticky-grand-total" class="text-base font-black text-white leading-tight">₹0</span>
         </div>
         <span id="sticky-item-count" class="bg-[#FFC400] text-slate-900 font-extrabold text-xs px-2 py-1 rounded-full">0 items</span>
@@ -285,24 +288,43 @@
   <aside id="cart-drawer" class="fixed top-0 right-0 w-full sm:w-[460px] h-full bg-white z-50 shadow-2xl flex flex-col transform translate-x-full transition-transform duration-300 ease-in-out">
     <div class="p-4 border-b flex justify-between items-center">
       <h3 class="font-bold text-slate-900 text-sm flex items-center gap-2">
-        🛒 Cart <span id="drawer-header-count" class="text-slate-400 font-normal text-xs">(0)</span>
+        🛒 Wholesale Cart <span id="drawer-header-count" class="text-slate-400 font-normal text-xs">(0)</span>
       </h3>
       <button onclick="toggleCartDrawer(false)" class="text-slate-400 hover:text-slate-700 font-bold text-lg px-2">✕</button>
+    </div>
+
+    <!-- Savings Announcement Strip -->
+    <div id="drawer-savings-strip" class="bg-red-50 border-b border-red-100 px-4 py-2 flex items-center justify-between text-xs font-bold text-red-700">
+      <span>🔥 Flat 90% Wholesale Discount Applied</span>
+      <span id="drawer-strip-savings">Save ₹0</span>
     </div>
 
     <div id="drawer-items-list" class="flex-1 overflow-y-auto p-4 space-y-3 bg-[#FCFCFD]"></div>
 
     <div class="p-4 border-t bg-white space-y-3">
       <div id="threshold-pill" class="py-2 px-3 rounded-lg text-xs font-semibold flex items-center gap-1.5 justify-center"></div>
-      <div class="flex justify-between items-baseline pt-1">
-        <span class="text-sm font-semibold text-slate-600">Total</span>
-        <span id="drawer-grand-total" class="text-xl font-black text-slate-900">₹0</span>
+
+      <!-- Price Breakdown -->
+      <div class="space-y-1 text-xs">
+        <div class="flex justify-between text-slate-500">
+          <span>Original Total (MRP)</span>
+          <span id="drawer-mrp-total" class="line-through font-bold">₹0</span>
+        </div>
+        <div class="flex justify-between text-emerald-600 font-bold">
+          <span>Your 90% Savings</span>
+          <span id="drawer-savings-total">- ₹0</span>
+        </div>
+        <div class="flex justify-between items-baseline pt-2 border-t border-slate-100">
+          <span class="text-sm font-black text-slate-900">Final Wholesale Payable</span>
+          <span id="drawer-grand-total" class="text-2xl font-black text-slate-900">₹0</span>
+        </div>
       </div>
+
       <button
         id="proceed-checkout-btn"
         disabled
         onclick="openOrderModal()"
-        class="w-full py-3 bg-[#FFC400] hover:bg-[#ebb500] disabled:bg-slate-200 disabled:text-slate-400 font-bold text-slate-900 rounded-lg text-sm transition flex items-center justify-center gap-1"
+        class="w-full py-3 bg-[#FFC400] hover:bg-[#ebb500] disabled:bg-slate-200 disabled:text-slate-400 font-bold text-slate-900 rounded-lg text-sm transition flex items-center justify-center gap-1 shadow-sm"
       >
         Proceed to Order ›
       </button>
@@ -321,11 +343,21 @@
       <p class="text-xs text-slate-500 mb-6">Enter your delivery details. Your wholesale bill will download as a PDF and be delivered directly to your WhatsApp number.</p>
 
       <div class="bg-[#F8FAFC] border border-slate-200 rounded-xl p-4 mb-6">
-        <div class="text-[11px] font-extrabold tracking-wider text-slate-400 uppercase mb-3">Order Summary</div>
+        <div class="text-[11px] font-extrabold tracking-wider text-slate-400 uppercase mb-3">Order Summary (Flat 90% OFF)</div>
         <div id="modal-summary-rows" class="space-y-2 text-xs font-medium text-slate-700 max-h-48 overflow-y-auto pr-2"></div>
-        <div class="border-t border-slate-200 mt-3 pt-3 flex justify-between items-center text-sm font-black text-slate-900">
-          <span>Total</span>
-          <span id="modal-summary-total">₹0</span>
+        <div class="border-t border-slate-200 mt-3 pt-3 flex flex-col gap-1 text-xs">
+          <div class="flex justify-between text-slate-500">
+            <span>Total MRP:</span>
+            <span id="modal-mrp-total" class="line-through">₹0</span>
+          </div>
+          <div class="flex justify-between text-emerald-600 font-bold">
+            <span>Total Savings (90% OFF):</span>
+            <span id="modal-savings-total">- ₹0</span>
+          </div>
+          <div class="flex justify-between items-center text-sm font-black text-slate-900 pt-1 border-t border-slate-100">
+            <span>Final Wholesale Total:</span>
+            <span id="modal-summary-total">₹0</span>
+          </div>
         </div>
       </div>
 
@@ -392,34 +424,22 @@
   <script>
     const MINIMUM_ORDER = 2000;
     const WHATSAPP_DEPOT = "919345999862";
-    // Allowed backend origins — the ?api= param must match one of these exactly
-    const ALLOWED_API_ORIGINS = new Set([
-      "https://asian-crackers-api.onrender.com",
-      "http://localhost:5000",
-      "http://localhost:5001",
-    ]);
+    const DISCOUNT_PERCENT = 90; // Flat 90% OFF Feature
 
-    function resolveApiBaseUrl() {
-      const param = new URLSearchParams(window.location.search).get("api");
-      if (param) {
-        try {
-          const origin = new URL(param).origin;
-          if (ALLOWED_API_ORIGINS.has(origin)) {
-            return origin;
-          }
-          console.warn("Rejected untrusted api param:", param);
-        } catch {
-          console.warn("Invalid api param:", param);
-        }
-      }
-      if (window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1") {
-        return window.location.port === "5000" ? "http://localhost:5000" : "http://localhost:5001";
-      }
-      return "https://asian-crackers-api.onrender.com";
-    }
-
-    const API_BASE_URL = resolveApiBaseUrl();
+    // Dynamic backend URL matching admin.html logic
+    const API_BASE_URL = new URLSearchParams(window.location.search).get("api") || (
+      (window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1")
+        ? (window.location.port === "5000" ? "http://localhost:5000" : "http://localhost:5001")
+        : "https://asian-crackers-api.onrender.com"
+    );
     const BACKEND_API_URL = `${API_BASE_URL}/api/send-whatsapp-bill`;
+
+    // Helper: compute Original MRP based on 90% discount (or explicit mrp if provided)
+    function getItemPrices(item) {
+      const wholesalePrice = Number(item.price);
+      const mrp = item.mrp ? Number(item.mrp) : (wholesalePrice * 10); // Selling price is 10% of MRP
+      return { wholesalePrice, mrp };
+    }
 
     const DEFAULT_CATALOG = [
       {
@@ -667,12 +687,25 @@
       }
     ];
 
-    // Use the database catalog for customers, with the bundled catalog as an offline fallback.
-    let CATALOG = JSON.parse(localStorage.getItem("asian_crackers_catalog")) || DEFAULT_CATALOG;
-
-    // Start with an empty cart or restore actual user cart from localStorage
+    let CATALOG = DEFAULT_CATALOG;
     let cart = JSON.parse(localStorage.getItem("asian_crackers_cart")) || {};
     let currentSearch = "";
+
+    async function fetchLiveCatalog() {
+      try {
+        const res = await fetch(`${API_BASE_URL}/api/products`);
+        if (res.ok) {
+          const data = await res.json();
+          if (Array.isArray(data) && data.length > 0) {
+            CATALOG = data;
+            renderCatalog();
+            syncState();
+          }
+        }
+      } catch (err) {
+        console.warn("Could not load catalog from server, using local fallback:", err);
+      }
+    }
 
     function handleSearch(val) {
       currentSearch = val.toLowerCase();
@@ -707,9 +740,9 @@
 
       let eligibleItems = allItems;
       if (vibe === "kids") {
-        eligibleItems = allItems.filter(i => i.tags.includes("kids") || i.tags.includes("colour") || i.price < 50);
+        eligibleItems = allItems.filter(i => (i.tags && (i.tags.includes("kids") || i.tags.includes("colour"))) || i.price < 50);
       } else if (vibe === "loud") {
-        eligibleItems = allItems.filter(i => i.tags.includes("sound") || i.tags.includes("loud") || i.tags.includes("repeaters"));
+        eligibleItems = allItems.filter(i => i.tags && (i.tags.includes("sound") || i.tags.includes("loud") || i.tags.includes("repeaters")));
       }
 
       let passes = 0;
@@ -738,8 +771,9 @@
         const filtered = cat.items.filter(item => {
           const matchName = item.name.toLowerCase().includes(currentSearch);
           const matchTamil = item.tamil.toLowerCase().includes(currentSearch);
+          const matchId = String(item.id).includes(currentSearch);
           const matchTag = item.tags && item.tags.some(t => t.includes(currentSearch));
-          return matchName || matchTamil || matchTag;
+          return matchName || matchTamil || matchId || matchTag;
         });
 
         if (filtered.length === 0) return;
@@ -771,13 +805,22 @@
           <div class="p-3 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-3">
             ${filtered.map(item => {
               const q = cart[item.id] || 0;
+              const { wholesalePrice, mrp } = getItemPrices(item);
+
               return `
                 <div class="border border-slate-200 rounded-xl p-3 flex flex-col justify-between bg-white relative hover:border-amber-400 transition group shadow-2xs">
+                  
+                  <!-- 90% Discount Badge on Left -->
+                  <div class="absolute top-2.5 left-2.5 bg-red-600 text-white text-[10px] font-black px-2 py-0.5 rounded-md shadow-xs z-10 flex items-center gap-0.5">
+                    <span>90% OFF</span>
+                  </div>
+
                   ${q > 0 ? `
                     <div class="absolute top-2.5 right-2.5 bg-[#FFC400] text-slate-900 text-[10px] font-extrabold px-1.5 py-0.5 rounded-md shadow-xs z-10">
                       ✓ ${q}
                     </div>
                   ` : ''}
+
                   <div>
                     <div class="aspect-[4/3] rounded-lg overflow-hidden bg-slate-100 mb-2 border border-slate-100">
                       <img 
@@ -794,8 +837,14 @@
                     </div>
                     <h4 class="font-bold text-xs text-slate-900 line-clamp-1">${item.name}</h4>
                     <p class="text-[11px] font-medium text-amber-800 line-clamp-1 mt-0.5">${item.tamil}</p>
-                    <p class="font-black text-slate-900 text-sm mt-1.5">₹${item.price.toFixed(2)}</p>
+                    
+                    <!-- Strikethrough MRP and Final 90% Wholesale Rate -->
+                    <div class="mt-2 flex items-baseline gap-2">
+                      <span class="text-xs text-slate-400 line-through">₹${Math.round(mrp)}</span>
+                      <span class="font-black text-slate-900 text-base">₹${wholesalePrice.toFixed(2)}</span>
+                    </div>
                   </div>
+
                   <div class="mt-3">
                     ${q === 0 ? `
                       <button onclick="updateQty('${item.id}', 1)" class="w-full py-1.5 bg-[#FFC400] hover:bg-[#ebb500] text-slate-900 font-bold rounded-lg text-xs transition">
@@ -821,19 +870,22 @@
     function syncState() {
       const allItems = CATALOG.flatMap(c => c.items);
       let totalCount = 0;
-      let totalAmount = 0;
+      let totalWholesaleAmount = 0;
+      let totalMrpAmount = 0;
 
-      // Persist cart to localStorage on every state change
       localStorage.setItem("asian_crackers_cart", JSON.stringify(cart));
 
       const drawerList = document.getElementById("drawer-items-list");
       drawerList.innerHTML = "";
 
       Object.entries(cart).forEach(([id, qty]) => {
-        const item = allItems.find(p => p.id === id);
+        const item = allItems.find(p => String(p.id) === String(id));
         if (!item) return;
+
+        const { wholesalePrice, mrp } = getItemPrices(item);
         totalCount += qty;
-        totalAmount += item.price * qty;
+        totalWholesaleAmount += wholesalePrice * qty;
+        totalMrpAmount += mrp * qty;
 
         const row = document.createElement("div");
         row.className = "flex items-center justify-between bg-white p-3 rounded-xl border border-slate-100 shadow-2xs gap-3";
@@ -847,7 +899,11 @@
           <div class="flex-1 min-w-0">
             <h5 class="font-black text-xs text-slate-900 truncate">${item.name}</h5>
             <span class="text-[10px] text-amber-700 block truncate">${item.tamil} • ${item.per}</span>
-            <span class="text-xs text-slate-400 font-medium">₹${item.price.toFixed(2)} × ${qty} = <b class="text-slate-800">₹${Math.round(item.price * qty)}</b></span>
+            <div class="flex items-center gap-2 mt-0.5">
+              <span class="text-[11px] text-slate-400 line-through">₹${Math.round(mrp * qty)}</span>
+              <span class="text-xs font-black text-slate-900">₹${Math.round(wholesalePrice * qty)}</span>
+              <span class="bg-red-100 text-red-600 text-[9px] font-bold px-1 rounded">90% OFF</span>
+            </div>
           </div>
           <div class="flex items-center gap-2 shrink-0">
             <div class="flex items-center border border-slate-200 rounded-lg overflow-hidden text-xs">
@@ -865,12 +921,19 @@
         drawerList.innerHTML = `<p class="text-center text-slate-400 text-xs py-12">Your cart is empty.</p>`;
       }
 
+      const totalSavings = Math.max(0, totalMrpAmount - totalWholesaleAmount);
+
       document.getElementById("nav-cart-badge").innerText = totalCount;
-      document.getElementById("nav-cart-total").innerText = `₹${Math.round(totalAmount)}`;
-      document.getElementById("sticky-grand-total").innerText = `₹${Math.round(totalAmount)}`;
+      document.getElementById("nav-cart-total").innerText = `₹${Math.round(totalWholesaleAmount)}`;
+      document.getElementById("sticky-grand-total").innerText = `₹${Math.round(totalWholesaleAmount)}`;
       document.getElementById("sticky-item-count").innerText = `${totalCount} items`;
       document.getElementById("drawer-header-count").innerText = `(${totalCount})`;
-      document.getElementById("drawer-grand-total").innerText = `₹${Math.round(totalAmount)}`;
+      
+      // Update Breakdown in Cart Drawer
+      document.getElementById("drawer-mrp-total").innerText = `₹${Math.round(totalMrpAmount)}`;
+      document.getElementById("drawer-savings-total").innerText = `- ₹${Math.round(totalSavings)}`;
+      document.getElementById("drawer-grand-total").innerText = `₹${Math.round(totalWholesaleAmount)}`;
+      document.getElementById("drawer-strip-savings").innerText = `Save ₹${Math.round(totalSavings)}`;
 
       const pill = document.getElementById("sticky-pill-bar");
       if (totalCount > 0) pill.classList.remove("hidden");
@@ -879,12 +942,12 @@
       const thresholdPill = document.getElementById("threshold-pill");
       const checkoutBtn = document.getElementById("proceed-checkout-btn");
 
-      if (totalAmount >= MINIMUM_ORDER) {
+      if (totalWholesaleAmount >= MINIMUM_ORDER) {
         thresholdPill.className = "py-2 px-3 rounded-lg text-xs font-semibold flex items-center gap-1.5 justify-center bg-emerald-50 text-emerald-700 border border-emerald-200";
         thresholdPill.innerHTML = `✓ Minimum wholesale order met — ready to checkout!`;
         checkoutBtn.disabled = false;
       } else {
-        const diff = MINIMUM_ORDER - totalAmount;
+        const diff = MINIMUM_ORDER - totalWholesaleAmount;
         thresholdPill.className = "py-2 px-3 rounded-lg text-xs font-semibold flex items-center gap-1.5 justify-center bg-amber-50 text-amber-700 border border-amber-200";
         thresholdPill.innerHTML = `Add ₹${Math.round(diff)} more for ₹${MINIMUM_ORDER} minimum order`;
         checkoutBtn.disabled = true;
@@ -909,23 +972,37 @@
       const summaryContainer = document.getElementById("modal-summary-rows");
       const allItems = CATALOG.flatMap(c => c.items);
       let grandTotal = 0;
+      let grandMrp = 0;
 
       summaryContainer.innerHTML = "";
       Object.entries(cart).forEach(([id, qty]) => {
-        const item = allItems.find(p => p.id === id);
-        const sub = Math.round(item.price * qty);
+        const item = allItems.find(p => String(p.id) === String(id));
+        if (!item) return;
+
+        const { wholesalePrice, mrp } = getItemPrices(item);
+        const sub = Math.round(wholesalePrice * qty);
+        const subMrp = Math.round(mrp * qty);
+
         grandTotal += sub;
+        grandMrp += subMrp;
+
         summaryContainer.innerHTML += `
           <div class="flex justify-between items-center py-1 border-b border-slate-100 last:border-0">
             <div>
               <span class="font-bold text-slate-800">${item.name}</span>
               <span class="text-[10px] text-slate-400 block">${item.tamil} × ${qty} ${item.per}</span>
             </div>
-            <span class="font-bold text-slate-900">₹${sub}</span>
+            <div class="text-right">
+              <span class="text-[11px] text-slate-400 line-through mr-1">₹${subMrp}</span>
+              <span class="font-bold text-slate-900">₹${sub}</span>
+            </div>
           </div>
         `;
       });
 
+      const grandSavings = Math.max(0, grandMrp - grandTotal);
+      document.getElementById("modal-mrp-total").innerText = `₹${grandMrp}`;
+      document.getElementById("modal-savings-total").innerText = `- ₹${grandSavings}`;
       document.getElementById("modal-summary-total").innerText = `₹${grandTotal}`;
       modal.classList.remove("hidden");
     }
@@ -953,7 +1030,10 @@
       const allItems = CATALOG.flatMap(c => c.items);
       const invoiceData = [];
       let grandTotal = 0;
+      let grandMrp = 0;
+
       let waMessage = `*NEW WHOLESALE ORDER - ASIAN CRACKERS (SIVAKASI)*\n` +
+                      `*OFFER APPLIED: FLAT 90% DISCOUNT*\n` +
                       `━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n` +
                       `👤 *Customer:* ${name}\n` +
                       `📞 *Phone:* ${phone}\n` +
@@ -963,18 +1043,35 @@
                       `*ORDERED ITEMS:*\n`;
 
       Object.entries(cart).forEach(([id, qty], idx) => {
-        const item = allItems.find(p => p.id === id);
-        const sub = Math.round(item.price * qty);
+        const item = allItems.find(p => String(p.id) === String(id));
+        if (!item) return;
+
+        const { wholesalePrice, mrp } = getItemPrices(item);
+        const sub = Math.round(wholesalePrice * qty);
         grandTotal += sub;
-        invoiceData.push([idx + 1, `${item.name} (${item.tamil})`, `Rs. ${item.price.toFixed(2)}`, `${qty} ${item.per}`, `Rs. ${sub}`]);
-        waMessage += `${idx + 1}. ${item.name} (${item.tamil}) - ${qty} ${item.per} = Rs. ${sub}\n`;
+        grandMrp += Math.round(mrp * qty);
+
+        invoiceData.push([
+          idx + 1, 
+          `${item.name} (${item.tamil})`, 
+          `Rs. ${Math.round(mrp)}`, 
+          `Rs. ${wholesalePrice.toFixed(2)} (-90%)`, 
+          `${qty} ${item.per}`, 
+          `Rs. ${sub}`
+        ]);
+
+        waMessage += `${idx + 1}. ${item.name} (${item.tamil}) - ${qty} ${item.per} = Rs. ${sub} (MRP: Rs. ${Math.round(mrp * qty)})\n`;
       });
 
+      const savings = Math.max(0, grandMrp - grandTotal);
+
       waMessage += `━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n` +
-                   `💰 *GRAND TOTAL: Rs. ${grandTotal}*\n` +
+                   `📦 *Total MRP:* Rs. ${grandMrp}\n` +
+                   `🎉 *You Saved (90% OFF):* Rs. ${savings}\n` +
+                   `💰 *FINAL WHOLESALE PAYABLE: Rs. ${grandTotal}*\n` +
                    `⚡ Please confirm parcel dispatch availability.`;
 
-      // 1. Generate Client-side PDF Invoice
+      // Generate Client-side PDF Invoice with 90% Discount Breakdown
       const { jsPDF } = window.jspdf;
       const doc = new jsPDF();
 
@@ -994,17 +1091,21 @@
 
       doc.autoTable({
         startY: 58,
-        head: [["#", "Item Description", "Rate", "Quantity", "Total"]],
+        head: [["#", "Item Description", "MRP", "Wholesale Rate", "Qty", "Total"]],
         body: invoiceData,
-        foot: [["", "", "", "Grand Total:", `Rs. ${grandTotal}`]],
+        foot: [
+          ["", "", "", "", "Total MRP:", `Rs. ${grandMrp}`],
+          ["", "", "", "", "Special Discount (90%):", `- Rs. ${savings}`],
+          ["", "", "", "", "Net Wholesale Total:", `Rs. ${grandTotal}`]
+        ],
         theme: "striped",
-        headStyles: { fillColor: [255, 196, 0], textColor: [15, 30, 54] }
+        headStyles: { fillColor: [255, 196, 0], textColor: [15, 30, 54] },
+        footStyles: { fontStyle: "bold", textColor: [15, 30, 54] }
       });
 
       const fileName = `Asian_Crackers_Invoice_${name.replace(/\s+/g, "_")}.pdf`;
       doc.save(fileName);
 
-      // 2. Extract Base64 PDF and attempt Cloud API dispatch
       const pdfBase64 = doc.output('datauristring').split(',')[1];
       let apiSuccess = false;
 
@@ -1032,12 +1133,10 @@
       } catch (err) {
         console.warn("Backend server not reachable:", err);
       } finally {
-        // Fallback: Open WhatsApp Chat with the depot and customer order list
         if (!apiSuccess) {
           window.open(`https://wa.me/${WHATSAPP_DEPOT}?text=${encodeURIComponent(waMessage)}`, "_blank");
         }
 
-        // Reset and clear cart upon order completion
         cart = {};
         localStorage.removeItem("asian_crackers_cart");
         syncState();
@@ -1049,22 +1148,9 @@
       }
     }
 
-    async function loadCatalog() {
-      try {
-        const response = await fetch(`${API_BASE_URL}/api/products`, { cache: "no-store" });
-        if (!response.ok) throw new Error(`HTTP ${response.status}`);
-        const liveCatalog = await response.json();
-        if (!Array.isArray(liveCatalog)) throw new Error("Invalid catalog response");
-        CATALOG = liveCatalog;
-        localStorage.setItem("asian_crackers_catalog", JSON.stringify(CATALOG));
-      } catch (err) {
-        console.warn("Live catalog unavailable; using cached catalog:", err);
-      }
-      renderCatalog();
-      syncState();
-    }
-
-    loadCatalog();
+    renderCatalog();
+    syncState();
+    fetchLiveCatalog();
   </script>
 </body>
 </html>
